@@ -4,7 +4,7 @@ TIMESTAMP=`date +%m_%d_%y__%H_%M_%S`
 ROLL_Q_DIR=./ 
 
 echo "$NUM_JOBS_IN_QUEUE jobs currently in queue"
-python3 ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE
+python ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE
 chmod a+x ${ROLL_Q_DIR}/roll_q_submit.sh
 echo ""
 echo "Here's the script:"
