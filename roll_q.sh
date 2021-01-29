@@ -1,10 +1,10 @@
 #!/bin/bash
 NUM_JOBS_IN_QUEUE=`/opt/software/powertools/bin/sq | grep -P "\d+\s+Jobs\s+in\s+the\s+queue" -o | grep -P "\d+" -o`
 TIMESTAMP=`date +%m_%d_%y__%H_%M_%S`
-ROLL_Q_DIR=./ 
+ROLL_Q_DIR=`dirname "$0"` 
 
 echo "$NUM_JOBS_IN_QUEUE jobs currently in queue"
-python ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE
+python ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE $ROLL_Q_DIR
 chmod a+x ${ROLL_Q_DIR}/roll_q_submit.sh
 echo ""
 echo "Here's the script:"

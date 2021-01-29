@@ -3,13 +3,16 @@ import sys
 #### CONFIG OPTIONS
 # replicates = 50       #Will be dynamically determined  
 roll_q_dir = './'
-if roll_q_dir[-1] != '/':
-    roll_q_dir += '/'
 
 if len(sys.argv) < 2:
     print('Must pass one argument, the number of jobs in the queue!')
     exit(-1)
 jobs_in_queue = int(sys.argv[1])
+if len(sys.argv) >= 3:
+    roll_q_dir = sys.argv[2]
+if roll_q_dir[-1] != '/':
+    roll_q_dir += '/'
+
 open_slots = 1000 - jobs_in_queue
 print(open_slots, 'slots available in queue.')
 cur_tasks_to_run = 0
