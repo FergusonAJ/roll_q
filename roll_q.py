@@ -11,7 +11,7 @@ jobs_in_queue = int(sys.argv[1])
 if len(sys.argv) >= 3:
     roll_q_dir = sys.argv[2]
 do_resub = True
-if len(sys.argv) > 4:
+if len(sys.argv) >= 4:
     do_resub = sys.argv[3].strip() == '1'
 if roll_q_dir[-1] != '/':
     roll_q_dir += '/'
