@@ -13,7 +13,8 @@ while getopts ":o" opt; do
   esac
 done
 
-NUM_JOBS_IN_QUEUE=`/opt/software/powertools/bin/sq | grep -P "\d+\s+Jobs\s+in\s+the\s+queue" -o | grep -P "\d+" -o`
+#NUM_JOBS_IN_QUEUE=`/opt/software/powertools/bin/sq | grep -P "\d+\s+Jobs\s+in\s+the\s+queue" -o | grep -P "\d+" -o`
+NUM_JOBS_IN_QUEUE=`/opt/software-current/2023.06/x86_64/generic/software/powertools/1.3.4/bin/sq | grep -P "\d+\s+Jobs\s+in\s+the\s+queue" -o | grep -P "\d+" -o`
 TIMESTAMP=`date +%m_%d_%y__%H_%M_%S`
 # Two-step process to get the path
 ROLL_Q_PATH=`realpath "$0"` 
@@ -25,7 +26,7 @@ echo "$NUM_JOBS_IN_QUEUE jobs currently in queue"
 if [ -e ${ROLL_Q_DIR}/roll_q_resub_job.sb ]; then
     rm ${ROLL_Q_DIR}/roll_q_resub_job.sb
 fi
-python ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE $ROLL_Q_DIR $DO_RESUB
+python3 ${ROLL_Q_DIR}/roll_q.py $NUM_JOBS_IN_QUEUE $ROLL_Q_DIR $DO_RESUB
 chmod a+x ${ROLL_Q_DIR}/roll_q_submit.sh
 echo ""
 echo "Here's the script:"
